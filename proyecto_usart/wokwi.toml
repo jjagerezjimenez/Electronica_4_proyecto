@@ -1,5 +1,0 @@
-[wokwi]
-version = 1
-firmware = ".pio/build/nucleo_64/firmware.elf" 
-elf = ".pio/build/nucleo_64/firmware.elf"
-gdbServerPort=3333

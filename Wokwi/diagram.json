@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-st-nucleo-l031k6",
+      "id": "nucleo",
+      "top": 20.41,
+      "left": -274.85,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 152.4,
+      "left": -166.2,
+      "rotate": 90,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 139.2,
+      "left": -211.75,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": -41.8,
+      "left": -268.8,
+      "attrs": { "color": "green", "xray": "1", "bounce": "1" }
+    },
+    { "type": "wokwi-lcd1602", "id": "lcd2", "top": -121.37, "left": -166.4, "attrs": {} },
+    { "type": "wokwi-logic-analyzer", "id": "logic1", "top": 134.75, "left": 105.6, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": 364.8, "left": 37.8, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd2", "top": 105.6, "left": -163.8, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -20.5, "left": 230.2, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn2",
+      "top": 332.6,
+      "left": -288,
+      "attrs": { "color": "red", "xray": "1" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn3",
+      "top": 332.6,
+      "left": -172.8,
+      "attrs": { "color": "blue", "xray": "1" }
+    }
+  ],
+  "connections": [
+    [ "$serialMonitor:TX", "nucleo:VCP_RX", "", [] ],
+    [ "$serialMonitor:RX", "nucleo:VCP_TX", "", [] ],
+    [ "lcd2:VSS", "nucleo:GND.2", "black", [ "v0" ] ],
+    [ "lcd2:VDD", "nucleo:5V", "red", [ "v0" ] ],
+    [ "lcd2:RW", "nucleo:GND.2", "black", [ "v0" ] ],
+    [ "lcd2:K", "nucleo:GND.2", "black", [ "v57.6", "h-67.2" ] ],
+    [ "nucleo:5V", "lcd2:A", "red", [ "h133.8" ] ],
+    [ "nucleo:D13", "led1:A", "green", [ "h0" ] ],
+    [ "r1:2", "led1:C", "black", [ "v0" ] ],
+    [ "nucleo:GND.2", "r1:1", "black", [ "h0" ] ],
+    [ "nucleo:D2", "btn1:2.l", "magenta", [ "h-28.8", "v-105.6" ] ],
+    [ "lcd2:RS", "nucleo:D11", "blue", [ "v96", "h0.3", "v134.4", "h-201.6", "v-57.6" ] ],
+    [ "lcd2:E", "nucleo:D12", "yellow", [ "v115.2", "h0", "v134.4", "h-230.4", "v-67.2" ] ],
+    [ "nucleo:GND.2", "gnd2:GND", "black", [ "h0" ] ],
+    [ "pot1:VCC", "nucleo:5V", "red", [ "v28.8", "h-183.2", "v19.2" ] ],
+    [ "nucleo:GND.2", "pot1:GND", "black", [ "h229.8", "v-28.8", "h124.8", "v19.2", "h57.6" ] ],
+    [ "lcd2:D4", "nucleo:D3", "cyan", [ "v0" ] ],
+    [ "lcd2:D5", "nucleo:D4", "cyan", [ "v105.6", "h-239.9" ] ],
+    [ "lcd2:D6", "nucleo:D5", "cyan", [ "v0" ] ],
+    [ "lcd2:D7", "nucleo:D6", "cyan", [ "v0" ] ],
+    [ "lcd2:V0", "pot1:SIG", "green", [ "v57.6", "h383.7" ] ],
+    [ "btn1:1.r", "nucleo:GND.2", "black", [ "v0", "h19.4", "v96" ] ],
+    [ "nucleo:GND.2", "btn3:1.l", "black", [ "h18.6", "v249.6", "h0", "v28.8" ] ],
+    [ "nucleo:GND.2", "btn2:1.r", "black", [ "h18.6", "v278.4" ] ],
+    [ "btn2:2.l", "nucleo:A0", "red", [ "h-19.2", "v-67", "h67.2", "v-134.4" ] ],
+    [ "btn3:2.r", "nucleo:A1", "blue", [ "h38.6", "v-9.4" ] ],
+    [ "logic1:GND", "gnd1:GND", "black", [ "h0" ] ],
+    [ "logic1:D0", "nucleo:D2", "magenta", [ "h-201.6", "v-19.2" ] ],
+    [ "logic1:D1", "nucleo:A0", "red", [ "h-57.6", "v48" ] ],
+    [ "logic1:D2", "nucleo:A1", "blue", [ "h-67.2", "v19.2", "h-210.6" ] ],
+    [ "logic1:D3", "nucleo:D12", "yellow", [ "h-182.4", "v57.6", "h-153.6" ] ],
+    [ "logic1:D4", "lcd2:RS", "gray", [ "h0" ] ],
+    [ "logic1:D5", "nucleo:D13", "green", [ "h-105.6", "v28.8" ] ]
+  ],
+  "dependencies": {}
+}
